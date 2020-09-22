@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: aksdemo
+  name: aksdemo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: aksdemo
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: aksdemo
+    spec:
+      containers:
+      - image: psbds/aksautoscaller:v2
+        name: aksautoscaller
+        env:
+            - name: ASPNETCORE_ENVIRONMENT 
+              value: Development
+        ports:
+            - containerPort: 80
+        resources:
+          requests:
+              cpu: 500m
+              memory: 1000Mi
+          limits:
+              cpu: 1000m
+              memory: 2000Mi

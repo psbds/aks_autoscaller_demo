@@ -1,0 +1,19 @@
+﻿@using System.Threading;
+@{
+	ViewData["Title"] = "Home Page";
+	var tokens = (List<CancellationToken>)ViewBag.Tokens;
+	var count = 0;
+}
+
+<div class="text-center">
+
+	
+
+	@foreach(var token in tokens)
+	{
+		<li>CPU Increased: @(count++)</li>
+	}
+
+	<a class="btn" href="@Url.Action("IncreaseCPU")">Increase CPU</a>
+
+</div>
